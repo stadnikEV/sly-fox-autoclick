@@ -1,0 +1,10 @@
+﻿sub(message, $message)
+  
+	HINTPOPUP("message", $message)  
+  BEEP (2000, 300)
+  wait(0.1)
+  BEEP (2000, 300)
+  wait(0.1)
+  BEEP (2000, 300)
+	
+end_sub

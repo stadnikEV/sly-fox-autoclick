@@ -1,0 +1,14 @@
+﻿
+sub(sendData)
+  
+	LOGWRITE ("send-data")
+  
+  clickToSend()
+  
+  isSendedEmail()
+  
+  IF($isSendedEmail = "false")
+    error("Письмо не отправлено")
+	END_IF
+
+end_sub

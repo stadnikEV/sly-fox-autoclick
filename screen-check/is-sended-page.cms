@@ -1,0 +1,13 @@
+﻿sub(isSendedPage)
+
+LOGWRITE ("is-sended-page")
+
+$isSendedPage = "false"
+
+getscreen
+
+IF_PICTURE_IN (264,207,711,264, "projects/img/sended-page.bmp")
+  $isSendedPage = "true"
+END_IF
+
+end_sub()

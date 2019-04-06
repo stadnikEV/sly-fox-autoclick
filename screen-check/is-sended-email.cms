@@ -1,0 +1,38 @@
+﻿sub(isSendedEmail)
+
+LOGWRITE ("is-sended-email")
+
+
+$isSendedPage = "false"
+$isNotSendedPage = "false"
+
+$startTime = $_time_t
+$timeLimited = "false"
+
+while($isSendedPage = "false" & $isNotSendedPage = "false" & $timeLimited = "false")
+
+	isSendedPage()
+	isNotSendedPage()
+
+  IF($_time_t - $startTime = 20)
+    $timeLimited = "true"
+  END_IF
+
+  wait(0.1)   
+
+end_cyc
+
+
+IF($timeLimited = "false" & $isSendedPage = "true")
+  $isSendedEmail = "true"
+END_IF
+
+IF($timeLimited = "false" & $isNotSendedPage = "true")
+  $isSendedEmail = "false"
+END_IF
+
+IF($timeLimited = "true")
+  $isSendedEmail = "error"
+END_IF
+
+end_sub()

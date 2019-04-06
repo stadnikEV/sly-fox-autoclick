@@ -1,0 +1,32 @@
+﻿sub(isPdfCreated)
+
+LOGWRITE ("is-pdf-created")
+
+
+$isPdfExists = "false"
+
+$startTime = $_time_t
+$timeLimited = "false"
+
+while($isPdfExists = "false" & $timeLimited = "false")
+
+	isPdfExists()
+
+  IF($_time_t - $startTime = 5)
+    $timeLimited = "true"
+  END_IF
+
+  wait(0.1)   
+
+end_cyc
+
+
+IF($timeLimited = "false")
+  $isPdfCreated = "true"
+END_IF
+
+IF($timeLimited = "true")
+  $isPdfCreated = "false"
+END_IF
+
+end_sub()

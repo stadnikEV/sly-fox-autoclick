@@ -1,0 +1,29 @@
+﻿SUB (m-move, $MOVE_END_X, $MOVE_END_Y, $MOVE_SPEED)
+
+   LOGWRITE ("m-move")  
+   
+   $MOVE_Start_X = $_xmouse
+   $MOVE_Start_Y = $_ymouse
+   $MOVE_X = $MOVE_Start_X
+   $MOVE_Y = $MOVE_Start_Y
+ 
+   $dist= DIST($MOVE_END_X,$MOVE_END_Y,$MOVE_Start_X,$MOVE_Start_Y)
+ 
+   $MOVE_SPEEDVAR= INT((SQRT($dist))/$MOVE_SPEED)    
+   IF($MOVE_SPEEDVAR < 1)
+      $MOVE_SPEEDVAR=1
+   END_IF
+ 
+   $MOVE_step=($dist-1)/$MOVE_SPEEDVAR
+   $MOVE_X_step = ($MOVE_END_X-$MOVE_Start_X)/$MOVE_step
+   $MOVE_Y_step = ($MOVE_END_Y-$MOVE_Start_Y)/$MOVE_step       
+ 
+   FOR($MOVE_i=0, $MOVE_i<INT($MOVE_step))
+      $MOVE_X = $MOVE_X+$MOVE_X_step
+      $MOVE_Y = $MOVE_Y+$MOVE_Y_step
+      MOVE(ROUND($MOVE_X,0), ROUND($MOVE_Y,0))
+      WAITMS(1)
+   END_CYC
+ 
+   MOVE($MOVE_END_X, $MOVE_END_Y)
+END_SUB

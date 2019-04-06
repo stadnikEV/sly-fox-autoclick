@@ -1,0 +1,14 @@
+﻿sub(dblkey, $KeyKodeA, $keyKodeB)
+
+	LOGWRITE ("dblkey")
+
+  KEYDOWN ($KeyKodeA)
+  WAITMS (RND(40,100))
+  KEYDOWN ($keyKodeB)
+  WAITMS (RND(40,100))
+  KEYUP ($KeyKodeA)
+  WAITMS (RND(40,100))
+  KEYUP ($KeyKodeB)
+  WAITMS (RND(40,60))
+
+end_sub

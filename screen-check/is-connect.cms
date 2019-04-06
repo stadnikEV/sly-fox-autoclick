@@ -1,0 +1,30 @@
+﻿sub(isConnect)
+
+LOGWRITE ("is-сonnect")
+
+GETSCREEN(1210,445,1249,481)
+
+
+$startTime = $_time_t
+$timeLimited = "false"
+
+while(PXL (1233, 463) ! 32768 & $timeLimited = "false")      
+  GETSCREEN(1210,445,1249,481)      
+
+  IF($_time_t - $startTime = 5)
+    $timeLimited = "true"
+  END_IF
+ 
+  wait(0.1)   
+end_cyc
+
+
+IF($timeLimited = "false")
+  $isConnect = "true"
+END_IF
+
+IF($timeLimited = "true")
+  $isConnect = "false"
+END_IF
+
+end_sub()

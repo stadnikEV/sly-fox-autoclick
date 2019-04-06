@@ -1,0 +1,24 @@
+﻿
+sub(removePdf)
+
+	LOGWRITE ("remove-pdf")
+
+	move(1424, 897)
+  LCLICK (1424, 897)
+  dblkey(16, 46) // shift + delete
+  
+	isRemovePdfConfirm()
+  
+  IF($isRemovePdfConfirm = "false")
+    error("Окно удаленя PDF не появилось")
+  END_IF
+  
+	KEYPRESS(13) // enter
+  
+  isPdfRemoved()
+
+  IF($isPdfRemoved = "false")
+    error("PDF не был удален")
+  END_IF
+
+end_sub

@@ -1,0 +1,14 @@
+﻿sub(isPdfExistsInMailRu)
+
+LOGWRITE ("is-pdf-exists-in-mail-ru")
+
+$isPdfExistsInMailRu = "false"
+
+getscreen
+
+IF_PICTURE_IN (292,322,438,440, "projects/img/pdf-exists-in-mail-ru.bmp", -1, 90)
+  $isPdfExistsInMailRu = "true"
+END_IF
+
+
+end_sub()

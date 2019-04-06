@@ -1,0 +1,15 @@
+﻿sub(isEmailFieldEmpty)
+
+LOGWRITE ("is-mail-field-empty")
+
+
+$isEmailFieldEmpty = "false"
+
+getscreen
+
+IF_PICTURE_IN (341,200,580,256, "projects/img/email-field-empty.bmp")
+  $isEmailFieldEmpty = "true"
+END_IF
+
+
+end_sub()

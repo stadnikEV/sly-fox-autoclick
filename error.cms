@@ -1,0 +1,7 @@
+﻿sub(error, $message)
+  
+	HINTPOPUP("error", $message)  
+  BEEP (1000, 2000)
+  halt  
+	
+end_sub

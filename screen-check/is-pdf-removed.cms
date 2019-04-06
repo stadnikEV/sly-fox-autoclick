@@ -1,0 +1,33 @@
+﻿sub(isPdfRemoved)
+
+LOGWRITE ("is-pdf-removed")
+
+
+$isEmptyFolder = "false"
+
+$startTime = $_time_t
+$timeLimited = "false"
+
+while($isEmptyFolder = "false" & $timeLimited = "false")
+
+	isEmptyFolder()
+
+  IF($_time_t - $startTime = 5)
+    $timeLimited = "true"
+  END_IF
+
+  wait(0.1)   
+
+end_cyc
+
+
+IF($timeLimited = "false")
+  $isPdfRemoved = "true"
+END_IF
+
+IF($timeLimited = "true")
+  $isPdfRemoved = "false"
+END_IF
+
+end_sub()
+

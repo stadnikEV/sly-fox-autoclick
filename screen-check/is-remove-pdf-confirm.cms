@@ -1,0 +1,32 @@
+﻿sub(isRemovePdfConfirm)
+
+LOGWRITE ("is-remove-pdf-confirm")
+
+
+$isRemovePdfConfirmExists = "false"
+
+$startTime = $_time_t
+$timeLimited = "false"
+
+while($isRemovePdfConfirmExists = "false" & $timeLimited = "false")
+
+	isRemovePdfConfirmExists()
+
+  IF($_time_t - $startTime = 3)
+    $timeLimited = "true"
+  END_IF
+
+  wait(0.1)   
+
+end_cyc
+
+
+IF($timeLimited = "false")
+  $isRemovePdfConfirm = "true"
+END_IF
+
+IF($timeLimited = "true")
+  $isRemovePdfConfirm = "false"
+END_IF
+
+end_sub()

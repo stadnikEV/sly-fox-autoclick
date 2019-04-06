@@ -1,0 +1,20 @@
+﻿sub(isPdfExists)
+
+LOGWRITE ("is-pdf-exists")
+
+$isPdfExists = "false"
+
+getscreen
+
+IF_PICTURE_IN (1375,850,1478,998, "projects/img/pdf-exists-big.bmp", -1, 90)
+  $isPdfExists = "true"
+END_IF
+
+getscreen
+
+IF_PICTURE_IN (1442,922,1478,956, "projects/img/pdf-exists-smal.bmp", -1, 90)
+  $isPdfExists = "true"
+END_IF
+
+
+end_sub()

@@ -1,0 +1,15 @@
+﻿sub(isMailRuReady)
+
+LOGWRITE ("is-mail-ru-ready")
+
+
+$isMailRuReady = "false"
+
+getscreen
+
+IF_PICTURE_IN (296,202,1149,302, "projects/img/mail-ru-ready.bmp")
+  $isMailRuReady = "true"
+END_IF
+
+
+end_sub()

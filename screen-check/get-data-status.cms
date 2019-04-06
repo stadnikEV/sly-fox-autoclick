@@ -1,0 +1,21 @@
+﻿
+sub(getDataStatus)
+
+LOGWRITE ("get-data-status")
+
+GETSCREEN(1205, 87, 1887, 485) 
+
+IF(PXL (1748, 102) = 16777215)
+  $dataStatus = "ok"
+END_IF
+
+IF(PXL (1748, 102) = 255)
+  $dataStatus = "bad"
+END_IF
+
+IF(PXL (1748, 102) = 32768 | PXL (1338, 463) = 16711680)
+  $dataStatus = "end"
+END_IF
+
+
+end_sub

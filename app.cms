@@ -1,0 +1,99 @@
+﻿#include "projects/error.cms"
+#include "projects/message.cms"
+#include "projects/screen-check/is-connect.cms"
+#include "projects/screen-check/get-data-status.cms"
+#include "projects/action/dblkey.cms"
+#include "projects/action/m-move.cms"
+#include "projects/screen-check/is-next-pos.cms"
+#include "projects/screen-check/is-pdf-exists.cms"
+#include "projects/screen-check/is-pdf-created.cms"
+#include "projects/screen-check/is-empty-folder.cms"
+#include "projects/screen-check/is-remove-pdf-confirm-exists.cms"
+#include "projects/screen-check/is-pdf-removed.cms"
+#include "projects/screen-check/is-remove-pdf-confirm.cms"
+#include "projects/action/remove-pdf.cms"
+#include "projects/action/next-pos.cms"
+#include "projects/screen-check/is-mail-ru-ready.cms"
+#include "projects/action/left-click.cms"
+#include "projects/screen-check/is-email-field-empty.cms"
+#include "projects/action/add-email-to-mail-ru.cms"
+#include "projects/screen-check/is-theme-field-empty.cms"
+#include "projects/action/add-theme-to-mail-ru.cms"
+#include "projects/screen-check/is-pdf-exists-in-mail-ru.cms"
+#include "projects/screen-check/is-pdf-added.cms"
+#include "projects/action/add-pdf-to-mail-ru.cms"
+#include "projects/action/add-data.cms"
+#include "projects/screen-check/is-not-sended-page.cms"
+#include "projects/screen-check/is-sended-page.cms"
+#include "projects/screen-check/is-sended-email.cms"
+#include "projects/action/click-to-send.cms"
+#include "projects/action/send-data.cms"
+#include "projects/action/click-to-new-email.cms"
+#include "projects/screen-check/is-confirm-new-email.cms"
+#include "projects/screen-check/is-refresh-page.cms"
+#include "projects/action/click-to-confirm-new-email.cms"
+#include "projects/action/new-email.cms"
+#include "projects/action/click-to-not-sended.cms"
+
+
+$sended = 0
+$delay = RND(100,200)
+
+start:
+
+WAITMS ($delay)
+
+
+// проверка соединения
+
+isConnect()
+
+IF($isConnect ! "true")
+  error("Нет соединения с сервером")
+END_IF
+
+
+// проверка данных
+
+getDataStatus()
+
+IF($dataStatus = "end")
+  message(STRCONCAT("Рассылка закончна. Отправлено: ", $sended))
+  halt
+END_IF
+
+IF($dataStatus = "bad")
+  nextPos()
+	goto(start)
+END_IF
+
+// добавление данных в mail.ru
+
+addData()
+
+WAITMS (RND(100,200))
+
+clickToSend()
+
+isSendedEmail()
+
+IF($isSendedEmail = "false")
+  clickToNotSended()
+END_IF
+
+IF($isSendedEmail = "error")
+  error("Time Limited при отправке письма")
+END_IF
+
+WAITMS (RND(100,200))
+
+newEmail()
+
+nextPos()
+
+INC($sended, 1)
+
+goto(start)
+
+
+halt

@@ -1,0 +1,15 @@
+﻿sub(clickToSend)
+
+	LOGWRITE ("click-to-send")
+
+	LCLICK(1407, 570)
+	move(rnd(1246, 1823), rnd(184, 671))
+	m-move(rnd(267, 334), rnd(172, 190), rnd(6, 12))
+	WAITMS (RND(50,200))
+	leftClick()
+	WAITMS (RND(50,100))
+	m-move(rnd(1286, 1865), rnd(280, 910), rnd(6, 12))
+	m-move(rnd(1221, 1464), rnd(409, 476), rnd(3, 8))
+	leftClick()
+
+end_sub

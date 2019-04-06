@@ -1,0 +1,10 @@
+﻿sub(leftClick)
+
+	LOGWRITE ("left-click")
+
+  LDOWN($_xmouse, $_ymouse)
+  WAITMS (RND(40,100))
+  LUP($_xmouse, $_ymouse)
+  WAITMS (RND(40,60))  
+
+end_sub

@@ -1,0 +1,14 @@
+﻿sub(isRemovePdfConfirmExists)
+
+LOGWRITE (is-remove-pdf-confirm-exists)
+
+$isRemovePdfConfirmExists = "false"
+
+getscreen
+
+IF_PICTURE_IN (970,579,1204,639, "projects/img/remove-pdf-confirm.bmp", -1, 70)
+  $isRemovePdfConfirmExists = "true"
+END_IF
+
+
+end_sub()

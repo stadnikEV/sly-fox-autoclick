@@ -1,0 +1,13 @@
+﻿sub(clickToNewEmail)
+
+	LOGWRITE ("click-to-new-email")
+
+	m-move(rnd(39, 156), rnd(174, 191), rnd(6, 12))
+	WAITMS (RND(50,100))
+	leftClick()
+	WAITMS (RND(50,100))
+	m-move(rnd(1286, 1865), rnd(280, 910), rnd(6, 12))
+	m-move(rnd(1221, 1464), rnd(409, 476), rnd(3, 8))
+	leftClick()
+
+end_sub

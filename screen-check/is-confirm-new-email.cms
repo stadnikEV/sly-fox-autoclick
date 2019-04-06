@@ -1,0 +1,15 @@
+﻿sub(isConfirmNewEmail)
+
+LOGWRITE ("is-confirm-new-email")
+
+
+$isConfirmNewEmail = "false"
+
+getscreen
+
+IF_PICTURE_IN (378,89,749,159, "projects/img/confirm-new-email.bmp", -1, 90)
+  $isConfirmNewEmail = "true"
+END_IF
+
+
+end_sub()

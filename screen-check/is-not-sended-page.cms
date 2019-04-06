@@ -1,0 +1,13 @@
+﻿sub(isNotSendedPage)
+
+LOGWRITE ("is-not-sended-page")
+
+$isNotSendedPage = "false"
+
+getscreen
+
+IF_PICTURE_IN (563,81,1041,173, "projects/img/not-sended-page.bmp", -1, 90)
+  $isNotSendedPage = "true"
+END_IF
+
+end_sub()

@@ -1,0 +1,15 @@
+﻿sub(isThemeFieldEmpty)
+
+LOGWRITE ("is-theme-field-empty")
+
+
+$isThemeFieldEmpty = "false"
+
+getscreen
+
+IF_PICTURE_IN (370,243,580,292, "projects/img/email-theme-empty.bmp")
+  $isThemeFieldEmpty = "true"
+END_IF
+
+
+end_sub()

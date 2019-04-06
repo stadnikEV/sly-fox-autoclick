@@ -1,0 +1,32 @@
+﻿sub(isNextPos)
+
+LOGWRITE ("is-next-pos")
+
+isConnect()
+
+GETSCREEN(1262,448,1307,479)
+
+
+$startTime = $_time_t
+$timeLimited = "false"
+
+while(PXL (1281, 466) ! 65535 & $timeLimited = "false" & $isConnect = "true")         
+  GETSCREEN(1262,448,1307,479)      
+
+  IF($_time_t - $startTime = 5)
+    $timeLimited = "true"
+  END_IF
+ 
+  wait(0.1)   
+end_cyc
+
+
+IF($timeLimited = "false" & $isConnect = "true")
+  $isNextPos = "true"
+END_IF
+
+IF($timeLimited = "true" | $isConnect = "false")
+  $isNextPos = "false"
+END_IF
+
+end_sub()

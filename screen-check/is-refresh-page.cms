@@ -1,0 +1,39 @@
+﻿sub(isRefreshPage)
+
+LOGWRITE ("is-refresh-page")
+
+
+$isMailRuReady = "false"
+$isConfirmNewEmail = "false"
+
+$startTime = $_time_t
+$timeLimited = "false"
+
+while($isMailRuReady = "false" & $isConfirmNewEmail = "false" & $timeLimited = "false")
+
+	isMailRuReady()
+	isConfirmNewEmail()
+
+
+  IF($_time_t - $startTime = 20)
+    $timeLimited = "true"
+  END_IF
+
+  wait(0.1)   
+
+end_cyc
+
+
+IF($timeLimited = "false" & $isMailRuReady = "true")
+  $isRefreshPage = "true"
+END_IF
+
+IF($timeLimited = "false" & $isConfirmNewEmail = "true")
+  $isRefreshPage = "false"
+END_IF
+
+IF($timeLimited = "true")
+  $isRefreshPage = "error"
+END_IF
+
+end_sub()

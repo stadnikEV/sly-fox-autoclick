@@ -1,0 +1,26 @@
+﻿
+sub(newEmail)
+  
+	LOGWRITE ("new-email")
+	
+  
+  clickToNewEmail()
+  
+  isRefreshPage()
+  
+  IF($isRefreshPage = "false")
+    clickToConfirmNewEmail()
+	END_IF
+	
+	isRefreshPage()
+	
+	IF($isRefreshPage = "false")
+    error("Окно подтвердите действие выскочило повторно")
+	END_IF
+  
+  IF($isRefreshPage = "error")
+    error("Страница Написать письмо не загрузилась")
+	END_IF
+	
+
+end_sub

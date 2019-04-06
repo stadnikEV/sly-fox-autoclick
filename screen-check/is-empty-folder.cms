@@ -1,0 +1,16 @@
+﻿sub(isEmptyFolder)
+
+LOGWRITE ("is-empty-folder")
+
+
+$isEmptyFolder = "false"
+
+getscreen
+
+IF_PICTURE_IN (1527,849,1726,897, "projects/img/empty-folder.bmp")
+  $isEmptyFolder = "true"
+END_IF
+
+
+
+end_sub()

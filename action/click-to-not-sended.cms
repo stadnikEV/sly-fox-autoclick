@@ -1,0 +1,7 @@
+﻿sub(clickToNotSended)
+  
+	LOGWRITE ("click-to-not-sended")
+	
+	LCLICK(1776, 459)
+  	
+end_sub

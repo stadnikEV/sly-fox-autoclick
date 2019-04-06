@@ -1,0 +1,17 @@
+﻿
+sub(nextPos)
+
+  LOGWRITE ("next-pos")
+
+  removePdf()
+  
+	LCLICK (1427, 218)
+	
+	isNextPos()
+	
+	IF($isNextPos = "false")
+    error("sly-fox не перешел на следующую позицию") 
+  END_IF
+  
+
+end_sub

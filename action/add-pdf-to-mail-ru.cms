@@ -1,0 +1,24 @@
+﻿sub(addPdfToMailRu)
+
+	LOGWRITE ("add-pdf-to-mail-ru")
+
+	LDOWN(1420, 904)
+	m-move(rnd(1246, 1823), rnd(184, 671), rnd(6, 12))
+	m-move(rnd(281, 999), rnd(320, 568), rnd(6, 12))
+	WAITMS (RND(50,150))
+	LUP($_xmouse, $_ymouse)
+	WAITMS (RND(50,200))
+	m-move(rnd(1286, 1865), rnd(280, 910), rnd(6, 12))
+	m-move(rnd(1221, 1464), rnd(409, 476), rnd(3, 8))
+	leftClick()
+
+
+	isPdfAdded()
+
+	IF($isPdfAdded = "false")
+    error("Pdf не был добавлен в mail.ru")
+  END_IF
+
+  WAITMS (RND(50,100))
+
+end_sub

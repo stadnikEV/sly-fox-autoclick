@@ -1,0 +1,32 @@
+﻿sub(isPdfAdded)
+
+LOGWRITE ("is-pdf-added")
+
+
+$isPdfExistsInMailRu = "false"
+
+$startTime = $_time_t
+$timeLimited = "false"
+
+while($isPdfExistsInMailRu = "false" & $timeLimited = "false")
+
+	isPdfExistsInMailRu()
+
+  IF($_time_t - $startTime = 20)
+    $timeLimited = "true"
+  END_IF
+
+  wait(0.1)   
+
+end_cyc
+
+
+IF($timeLimited = "false")
+  $isPdfAdded = "true"
+END_IF
+
+IF($timeLimited = "true")
+  $isPdfAdded = "false"
+END_IF
+
+end_sub()

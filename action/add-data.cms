@@ -1,0 +1,24 @@
+﻿
+sub(addData)
+
+	LOGWRITE ("add-data")
+
+	isMailRuReady()
+  
+	IF($isMailRuReady = "false")
+    error("mail.ru не готов к принятию данных")
+  END_IF
+
+  addEmailToMailRu()
+  addThemeToMailRu()
+
+  isPdfCreated()
+
+  IF($isPdfCreated = "false")
+    error("pdf не был создан")
+  END_IF
+
+
+  addPdfToMailRu()
+
+end_sub
